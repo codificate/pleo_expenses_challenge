@@ -54,6 +54,7 @@ ext {
     retrofitVersion = "2.2.0"
     rxKotlinVersion = "2.2.0"
     rxAndroidVersion = "2.0.2"
+    navigationVersion = "1.0.0"
     rxRetrofitAdapterVersion = "2.2.0"
     gsonRetrofitConverterVersion = "2.1.0"
 
