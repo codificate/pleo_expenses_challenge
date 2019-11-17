@@ -3,19 +3,27 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  View
+  View,
+  NativeModules,
+  TouchableOpacity
 } from 'react-native';
+
+const onClickWelcomeButton = () => {
+  NativeModules.ExpensesModule.show()
+}
 
 const App = () => {
 
   return (
     <Fragment>
       <SafeAreaView style={styles.container}>
-        <View style={styles.buttonView}>
-          <Text style={styles.buttonTextContent}>
-            Welcome to Pleo
-          </Text>
-        </View>
+        <TouchableOpacity onPress={onClickWelcomeButton}>
+          <View style={styles.buttonView}>
+            <Text style={styles.buttonTextContent}>
+              Welcome to Pleo
+            </Text>
+          </View>
+        </TouchableOpacity>
       </SafeAreaView>
     </Fragment>
   )
