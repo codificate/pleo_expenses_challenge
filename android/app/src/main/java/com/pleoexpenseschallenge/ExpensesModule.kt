@@ -20,5 +20,4 @@ class ExpensesModule constructor(private val context: ReactApplicationContext) :
             context.startActivity(intent)
         }
     }
-
 }
