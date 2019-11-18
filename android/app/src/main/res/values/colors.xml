@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="pleoPrimary">#F10F2D</color>
+    <color name="pleoPrimaryDark">#E83859</color>
+    <color name="pleoBackgroundLight">#D8DBDE</color>
+    <color name="pleoBackgroundDark">#B5BBC4</color>
+    <color name="pleoContentTextDark">#2C323C</color>
+    <color name="pleoContentTextLight">#929BA7</color>
+</resources>

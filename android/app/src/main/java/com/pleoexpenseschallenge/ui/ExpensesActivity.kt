@@ -16,8 +16,6 @@ class ExpensesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_expenses)
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-
-//        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
