@@ -16,8 +16,21 @@ class ListExpensesViewModel(private val fetchExpenses: FetchExpenses) : ViewMode
 
     private val subscriptions = CompositeDisposable()
 
+    private var limit = 25
+    private var offset = 0
+    private var total = 0
+
     fun onViewCreated(){
         getExpenses()
+    }
+
+    fun getExpenses(){
+        if (offset == 0 || offset < total){
+            fetchExpenses(limit, offset)
+                    .onDefaultSchedulers()
+                    .subscribe { onPleoExpensesFetched(it) }
+                    .addTo(subscriptions)
+        }
     }
 
     override fun onCleared() {
@@ -25,15 +38,14 @@ class ListExpensesViewModel(private val fetchExpenses: FetchExpenses) : ViewMode
         subscriptions.clear()
     }
 
-    private fun getExpenses(){
-        fetchExpenses()
-                .onDefaultSchedulers()
-                .subscribe { onPleoExpensesFetched(it) }
-                .addTo(subscriptions)
+    private fun onPleoExpensesFetched(expenses: PleoExpenses) {
+        total = expenses.total
+        updateOffset(expenses.listExpens.last().index + 1)
+        _mutablePleoExpenses.postValue(expenses)
     }
 
-    private fun onPleoExpensesFetched(pleoExpenses: PleoExpenses) {
-        _mutablePleoExpenses.postValue(pleoExpenses)
+    private fun updateOffset(lastExpenseIndex: Int) {
+        offset = lastExpenseIndex
     }
 
 }

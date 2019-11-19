@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pleoexpenseschallenge.domain.model.Expense
 
-class ExpensesAdapter(private val expenses: MutableList<Expense>) : RecyclerView.Adapter<ExpenseViewHolder>() {
+class ExpensesAdapter(val expenses: MutableList<Expense>) : RecyclerView.Adapter<ExpenseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseViewHolder {
         return ExpenseViewHolder(createExpenseView(parent))

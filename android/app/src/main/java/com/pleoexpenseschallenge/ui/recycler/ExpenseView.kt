@@ -19,6 +19,10 @@ class ExpenseView(context: Context) : ConstraintLayout(context){
         expenseDate.text = date
     }
 
+    fun setTime(time: String){
+        expenseTime.text = time
+    }
+
     fun setAmount(amount: String){
         expenseAmount.text = amount
     }

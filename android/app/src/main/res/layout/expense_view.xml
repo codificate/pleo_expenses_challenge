@@ -11,20 +11,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/circle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/expenseMerchant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textSize="18sp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/pleoContentTextDark"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/expensePicture"
         app:layout_constraintTop_toTopOf="@+id/expensePicture"
         tools:text="KAGE" />
@@ -33,27 +34,44 @@
         android:id="@+id/expenseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        tools:text="2018-09-10 11:29"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto_thin"
+        android:textColor="@color/pleoPrimaryDark"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/expenseMerchant"
-        app:layout_constraintTop_toBottomOf="@+id/expenseMerchant" />
+        app:layout_constraintTop_toBottomOf="@+id/expenseMerchant"
+        tools:text="2018-09-10" />
+
+    <TextView
+        android:id="@+id/expenseTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/roboto_thin"
+        android:textColor="@color/pleoPrimary"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/expenseDate"
+        app:layout_constraintTop_toTopOf="@+id/expenseDate"
+        tools:text="11:18" />
 
     <View
         android:id="@+id/expenseBottomDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#707070"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/expenseAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/pleoContentTextDark"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/expenseBottomDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1854.99" />
@@ -62,9 +80,12 @@
         android:id="@+id/expenseAmountCurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        tools:text="EUR"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/pleoContentTextLight"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/expenseAmount"
-        app:layout_constraintTop_toBottomOf="@+id/expenseAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/expenseAmount"
+        tools:text="EUR" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

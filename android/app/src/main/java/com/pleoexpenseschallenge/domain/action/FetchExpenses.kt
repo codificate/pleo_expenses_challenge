@@ -5,7 +5,7 @@ import com.pleoexpenseschallenge.domain.service.ExpensesService
 import io.reactivex.Maybe
 
 class FetchExpenses(private val expensesService: ExpensesService) {
-    operator fun invoke(): Maybe<PleoExpenses> {
-        return expensesService.getExpenses()
+    operator fun invoke(limit: Int, offset: Int): Maybe<PleoExpenses> {
+        return expensesService.getExpenses(limit, offset)
     }
 }
