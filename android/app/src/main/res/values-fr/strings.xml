@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">pleoExpensesChallenge</string>
+    <string name="filter_text_button">Filtres</string>
+    <string name="filter_sort_by_amount_text">Trier par Montant</string>
+    <string name="filter_sort_by_alphabet_text">Trier par A à Z</string>
+</resources>

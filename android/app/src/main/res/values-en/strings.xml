@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">pleoExpensesChallenge</string>
     <string name="filter_text_button">Filters</string>
-    <string name="filter_sort_by_amount_text">Sort by amount</string>
+    <string name="filter_sort_by_amount_text">Sort by Amount</string>
     <string name="filter_sort_by_alphabet_text">Sort by A-Z</string>
 </resources>

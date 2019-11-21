@@ -48,4 +48,18 @@ class ListExpensesViewModel(private val fetchExpenses: FetchExpenses) : ViewMode
         offset = lastExpenseIndex
     }
 
+    fun sortByAmount() {
+        var listExpenses = _mutablePleoExpenses.value?.listExpens!!
+        var sortedList = listExpenses.sortedWith(compareBy { it.amount.value })
+        var expensesSortedByAmount = PleoExpenses(sortedList.toMutableList(), total)
+        _mutablePleoExpenses.postValue(expensesSortedByAmount)
+    }
+
+    fun sortByAlphabet() {
+        var listExpenses = _mutablePleoExpenses.value?.listExpens!!
+        var sortedList = listExpenses.sortedWith(compareBy { it.merchant })
+        var expensesSortedByAmount = PleoExpenses(sortedList.toMutableList(), total)
+        _mutablePleoExpenses.postValue(expensesSortedByAmount)
+    }
+
 }
