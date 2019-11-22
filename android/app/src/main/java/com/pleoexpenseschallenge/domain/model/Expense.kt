@@ -4,7 +4,7 @@ import java.util.*
 
 data class Expense(
         val id: String, val amount: Amount,
-        val comment: String, val user: User,
+        var comment: String, val user: User,
         val date: Date, val merchant: String, val index: Int)
 
 data class Amount(val currency: String, val value: Double)

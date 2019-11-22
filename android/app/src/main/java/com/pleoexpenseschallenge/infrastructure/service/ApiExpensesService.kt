@@ -5,7 +5,9 @@ import com.pleoexpenseschallenge.domain.model.Amount
 import com.pleoexpenseschallenge.domain.model.Expense
 import com.pleoexpenseschallenge.domain.model.PleoExpenses
 import com.pleoexpenseschallenge.domain.service.ExpensesService
+import com.pleoexpenseschallenge.infrastructure.request.CommentBody
 import com.pleoexpenseschallenge.infrastructure.response.ExpensesResponse
+import io.reactivex.Completable
 import io.reactivex.Maybe
 import java.text.SimpleDateFormat
 import java.util.*
@@ -14,6 +16,10 @@ class ApiExpensesService(private val client: ApiExpensesClient): ExpensesService
 
     override fun getExpenses(limit: Int, offset: Int): Maybe<PleoExpenses> {
         return client.fetchExpenses(limit, offset).map { it.toPleoExpenses() }
+    }
+
+    override fun setComment(id: String, commentBody: CommentBody): Completable {
+        return client.setComment(id, commentBody)
     }
 
     private fun ExpensesResponse.toPleoExpenses(): PleoExpenses {
