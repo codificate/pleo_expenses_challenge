@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pleoexpenseschallenge.domain.action.FetchExpenses
+import com.pleoexpenseschallenge.domain.action.PostComment
 import com.pleoexpenseschallenge.domain.model.PleoExpenses
 import com.pleoexpenseschallenge.rxextentions.onDefaultSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 
-class ListExpensesViewModel(private val fetchExpenses: FetchExpenses) : ViewModel() {
+class ListExpensesViewModel(private val fetchExpenses: FetchExpenses, private val postComment: PostComment) : ViewModel() {
 
     private val _mutablePleoExpenses = MutableLiveData<PleoExpenses>()
     val pleoExpenses: LiveData<PleoExpenses> = _mutablePleoExpenses
@@ -19,6 +20,11 @@ class ListExpensesViewModel(private val fetchExpenses: FetchExpenses) : ViewMode
     private var limit = 25
     private var offset = 0
     private var total = 0
+
+    override fun onCleared() {
+        super.onCleared()
+        subscriptions.clear()
+    }
 
     fun onViewCreated(){
         getExpenses()
@@ -33,19 +39,11 @@ class ListExpensesViewModel(private val fetchExpenses: FetchExpenses) : ViewMode
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        subscriptions.clear()
-    }
-
-    private fun onPleoExpensesFetched(expenses: PleoExpenses) {
-        total = expenses.total
-        updateOffset(expenses.listExpens.last().index + 1)
-        _mutablePleoExpenses.postValue(expenses)
-    }
-
-    private fun updateOffset(lastExpenseIndex: Int) {
-        offset = lastExpenseIndex
+    fun onCommentSuggested(id: String, comment: String){
+        postComment(id, comment)
+                .onDefaultSchedulers()
+                .subscribe()
+                .addTo(subscriptions)
     }
 
     fun sortByAmount() {
@@ -60,6 +58,16 @@ class ListExpensesViewModel(private val fetchExpenses: FetchExpenses) : ViewMode
         var sortedList = listExpenses.sortedWith(compareBy { it.merchant })
         var expensesSortedByAmount = PleoExpenses(sortedList.toMutableList(), total)
         _mutablePleoExpenses.postValue(expensesSortedByAmount)
+    }
+
+    private fun onPleoExpensesFetched(expenses: PleoExpenses) {
+        total = expenses.total
+        updateOffset(expenses.listExpens.last().index + 1)
+        _mutablePleoExpenses.postValue(expenses)
+    }
+
+    private fun updateOffset(lastExpenseIndex: Int) {
+        offset = lastExpenseIndex
     }
 
 }

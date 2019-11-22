@@ -40,6 +40,7 @@ class ListExpenses : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        listExpensesRecyclerView.setHasFixedSize(false)
         listExpensesRecyclerView.layoutManager = LinearLayoutManager(context)
         listExpensesRecyclerView.addOnScrollListener(object : EndlessRecyclerOnScrollListener(){
             override fun onLoadMore() {
@@ -82,11 +83,12 @@ class ListExpenses : Fragment() {
             showFilterButtons()
             (listExpensesRecyclerView.adapter as ExpensesAdapter).expenses.clear()
             (listExpensesRecyclerView.adapter as ExpensesAdapter).expenses.addAll(pleoExpenses.listExpens)
-        }
-        if (listExpensesRecyclerView.adapter != null){
+        } else if (listExpensesRecyclerView.adapter != null){
             (listExpensesRecyclerView.adapter as ExpensesAdapter).expenses.addAll(pleoExpenses.listExpens)
         } else {
-            listExpensesRecyclerView.adapter = ExpensesAdapter(pleoExpenses.listExpens)
+            listExpensesRecyclerView.adapter = ExpensesAdapter(pleoExpenses.listExpens){ id, comment ->
+                viewModel.onCommentSuggested(id, comment)
+            }
             listExpensesFiltersButton.visibility = VISIBLE
         }
 

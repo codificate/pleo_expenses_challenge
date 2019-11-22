@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.pleoexpenseschallenge.domain.factory.createFetchExpensesAction
+import com.pleoexpenseschallenge.domain.factory.createPostCommentAction
 
 object ListExpensesViewModelFactory {
 
@@ -17,7 +18,8 @@ object ListExpensesViewModelFactory {
         return object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 return ListExpensesViewModel(
-                        createFetchExpensesAction()
+                        createFetchExpensesAction(),
+                        createPostCommentAction()
                 ) as T
             }
         }

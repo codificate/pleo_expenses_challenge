@@ -12,9 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:src="@drawable/circle"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,25 +52,20 @@
         app:layout_constraintTop_toTopOf="@+id/expenseDate"
         tools:text="11:18" />
 
-    <View
-        android:id="@+id/expenseBottomDivider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/expenseAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/roboto_regular"
         android:textColor="@color/pleoContentTextDark"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/expenseMerchant"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/expenseMerchant"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1854.99" />
 
@@ -84,8 +77,47 @@
         android:fontFamily="@font/roboto_regular"
         android:textColor="@color/pleoContentTextLight"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/expenseAmount"
+        app:layout_constraintStart_toStartOf="@+id/expenseAmount"
         app:layout_constraintTop_toBottomOf="@+id/expenseAmount"
         tools:text="EUR" />
+
+    <ImageView
+        android:id="@+id/expenseCommentIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/expensePicture"
+        app:layout_constraintTop_toBottomOf="@+id/expensePicture"
+        app:srcCompat="@drawable/comment_icon" />
+
+
+    <TextView
+        android:id="@+id/expenseComment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/roboto_thin"
+        android:textColor="@color/pleoContentTextDark"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/expenseBottomDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/expenseCommentIcon"
+        app:layout_constraintTop_toTopOf="@+id/expenseCommentIcon"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="View comment"
+        android:ellipsize="end"
+        android:maxLines="1"/>
+
+    <View
+        android:id="@+id/expenseBottomDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
