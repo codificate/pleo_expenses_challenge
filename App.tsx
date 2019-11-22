@@ -3,13 +3,26 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
+  Alert,
   View,
+  Platform,
   NativeModules,
   TouchableOpacity
 } from 'react-native';
 
 const onClickWelcomeButton = () => {
-  NativeModules.ExpensesModule.show()
+  if(Platform.OS === 'android'){
+    NativeModules.ExpensesModule.show() 
+  } else {
+    Alert.alert(
+      'Ouch!',
+      "Looks like, this feature is not available on iOS",
+      [
+        {text: 'OK', onPress: () => console.log('OK Pressed'), style: 'default'},
+      ],
+      {cancelable: true},
+    );
+  }
 }
 
 const App = () => {
@@ -38,7 +51,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 10,
     paddingBottom: 10,
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor: "#FFFFFF"
   },
   buttonView: {
     borderRadius: 25,
