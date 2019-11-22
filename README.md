@@ -53,7 +53,7 @@ $ yarn android
 ### Libraries
 
 
-| Name | Version |
+| Name | Why? |
 | ------ | ------ |
 | RxJava | For multithreading tasks |
 | Retrofit | For create network calls |
